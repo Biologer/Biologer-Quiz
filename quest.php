@@ -198,7 +198,7 @@
     # Save the variables to be used if page is refreshed
     $_SESSION['random4species']=$random4species;
     $_SESSION['selected_species']=$selected_species;
-    $_SESSION['$image_species']=$image_species;
+    $_SESSION['image_species']=$image_species;
     $_SESSION['no_questions']=$no_questions;
     $_SESSION['question'] = $question;
 
@@ -226,7 +226,7 @@
     if ($_POST['randcheck'] != $_SESSION['rand']) {
       $random4species = $_SESSION['random4species'];
       $selected_species = $_SESSION['selected_species'];
-      $image_species = $_SESSION['$image_species'];
+      $image_species = $_SESSION['image_species'];
       $score = $_SESSION['score'];
       $question = $_SESSION['question'];
       $no_questions = $_SESSION['no_questions'];
@@ -259,7 +259,7 @@
     # Save the variables to be used if page is refreshed
     $_SESSION['random4species']=$random4species;
     $_SESSION['selected_species']=$selected_species;
-    $_SESSION['$image_species']=$image_species;
+    $_SESSION['image_species']=$image_species;
     $_SESSION['no_questions']=$no_questions;
     $_SESSION['question'] = $question;
   }
@@ -298,29 +298,31 @@ if ($question  <= $no_questions) {
    <p style="color:gray;size:80%">Autor fotografije: <?php echo($image_species['author']); ?></p>
 <br>
   <form action="quest.php" method="POST">
-  <center><table>
-  <tr>
-    <td>
+  <center>
+   <table>
+    <tr>
+     <td>
       <input type="radio" id="answer1" name="answer" value="0">
       <label for="answer1"><?php echo($random4species[0]['lat_name']);?></label></td>
-    <td>
+     <td>
       <input type="radio" id="answer2" name="answer" value="1">
       <label for="answer2"><?php echo($random4species[1]['lat_name']);?></label></td>
     </tr>
     <tr>
-    <td>
-     <input type="radio" id="answer3" name="answer" value="2">
-     <label for="answer3"><?php echo($random4species[2]['lat_name']);?></label></td>
-    <td>
-     <input type="radio" id="answer4" name="answer" value="3">
-     <label for="answer4"><?php echo($random4species[3]['lat_name']);?></label></td>
+     <td>
+      <input type="radio" id="answer3" name="answer" value="2">
+      <label for="answer3"><?php echo($random4species[2]['lat_name']);?></label></td>
+     <td>
+      <input type="radio" id="answer4" name="answer" value="3">
+      <label for="answer4"><?php echo($random4species[3]['lat_name']);?></label></td>
     </tr>
- </table></center>
+   </table>
+  </center>
  <br>
 
  <input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
  <input type="hidden" name="correct_answer" value=<?php echo($selected_species); ?>>
- <input type="hidden" name="correct_name" value=<?php echo($species_table[$random4species[$selected_species]]['lat_name']); ?>>
+ <input type="hidden" name="correct_name" value=<?php echo($random4species[$selected_species]['lat_name']); ?>>
  <input type="hidden" name="species_table" value=<?php echo($species_table); ?>>
  <input type="hidden" name="username" value=<?php echo($username); ?>>
  <input type="hidden" name="level" value=<?php echo($level); ?>>
